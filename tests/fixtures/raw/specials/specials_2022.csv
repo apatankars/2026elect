@@ -1,0 +1,4 @@
+special_id,race_id,cycle,state,district,election_date,seat_pvi,result_margin,turnout
+S1,,2022,OH,01,2022-06-01,-10,-2,50000
+S2,,2022,PA,12,2022-09-01,5,9,100000
+S3,,2022,NY,19,2022-12-01,0,20,80000

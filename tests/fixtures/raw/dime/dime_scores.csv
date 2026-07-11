@@ -1,0 +1,4 @@
+candidate_id,cycle,cfscore,cfscore_dyn,n_donors,source
+H8PA07123,2022,-0.62,-0.58,5210,DIME-v4
+H8PA07123,2024,-0.55,,6100,DIME-v4
+H6TX02999,2024,1.85,1.90,900,DIME-v4

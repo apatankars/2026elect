@@ -1,0 +1,6 @@
+geoid,geo_level,vintage,release_date,variable,value
+250250001001,BG,ACS5-2023,2024-12-12,pct_ba_plus,44.2
+250250001001,BG,ACS5-2023,2024-12-12,median_hh_income,85400
+36061003100,TRACT,ACS5-2023,2024-12-12,pct_ba_plus,61.0
+4217,CD,ACS5-2023,2024-12-12,pct_ba_plus,38.5
+4217,CD,ACS5-2023,2024-12-12,median_age,41.3

@@ -1,0 +1,88 @@
+[project]
+name = "midterms26"
+version = "0.0.1"
+description = "Calibration-native 2026 midterms election forecast: redistricting-native fundamentals + conformal UQ"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "MIT" }
+authors = [{ name = "midterms26" }]
+
+# Core runtime kept deliberately light so the Phase 0 DAG dry-run and CI run
+# without compiling the heavy scientific stack. Model/geo deps live in extras.
+dependencies = [
+    "polars>=1.17",
+    "duckdb>=1.1",
+    "pyarrow>=18.0",
+    "typer>=0.15",
+    "structlog>=24.4",
+]
+
+[project.optional-dependencies]
+# Bayesian + tabular members (JAX can be slow to install; opt-in).
+models = [
+    "numpyro>=0.16",
+    "jax>=0.4.35",
+    "tabpfn>=2.0",
+    "scikit-learn>=1.6",
+    "numpy>=2.0",
+    "scipy>=1.14",
+]
+# Redistricting-native geo pipeline.
+geo = [
+    "geopandas>=1.0",
+    "shapely>=2.0",
+    "maup>=2.0",
+    "pyogrio>=0.10",
+]
+# Ingest connectors.
+ingest = [
+    "httpx>=0.28",
+    "tenacity>=9.0",
+]
+dev = [
+    "ruff>=0.8",
+    "pytest>=8.3",
+    "pytest-cov>=6.0",
+    "mypy>=1.14",
+    "hypothesis>=6.122",
+]
+
+[project.scripts]
+midterms26 = "midterms26.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/midterms26"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests", "pipelines"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "TID"]
+ignore = ["E501"]  # line length handled by formatter
+
+[tool.mypy]
+python_version = "3.12"
+packages = ["midterms26"]
+mypy_path = "src"
+strict = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+# Third-party libs without stubs; loosen as stubs land.
+[[tool.mypy.overrides]]
+module = ["duckdb.*", "polars.*", "numpyro.*", "jax.*", "tabpfn.*", "maup.*", "geopandas.*", "shapely.*", "httpx.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+pythonpath = ["src"]
+
+[tool.coverage.run]
+source = ["midterms26"]
+branch = true

@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.python-version
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.hypothesis/
+.coverage
+htmlcov/
+
+# Data warehouse + immutable downloads (tracked via DVC/git-lfs, not git)
+data/warehouse.duckdb
+data/warehouse.duckdb.wal
+data/raw/
+data/geo/
+!data/raw/.gitkeep
+!data/geo/.gitkeep
+
+# Emitted artifacts
+*.tmp
+dist/
+build/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
