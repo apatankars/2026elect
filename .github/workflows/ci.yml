@@ -35,8 +35,32 @@ jobs:
       - name: Mypy (strict, src only)
         run: mypy
 
-      - name: Pytest
+      - name: Pytest (light stack — model tests skip via importorskip)
         run: pytest
 
       - name: Phase 0 acceptance — backfill DAG dry-run
         run: python pipelines/backfill.py --dry-run
+
+  # Heavy job: exercises the Bayes (NumPyro) + TabPFN members for real. Kept
+  # separate so the light job above stays fast; the fallback backend is forced so
+  # no TabPFN checkpoint is downloaded in CI.
+  models-test:
+    runs-on: ubuntu-latest
+    env:
+      MIDTERMS26_TABPFN_BACKEND: sklearn
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Set up Python 3.12
+        run: uv python install 3.12
+
+      - name: Install (core + dev + models)
+        run: uv pip install --system -e ".[dev,models]"
+
+      - name: Pytest (model members)
+        run: pytest tests/test_models_base.py tests/test_models_members.py

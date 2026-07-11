@@ -28,6 +28,8 @@ from midterms26.warehouse import DEFAULT_DB_PATH, connect, init_schema
 app = typer.Typer(add_completion=False, help="Calibration-native 2026 midterms forecast.")
 log = get_logger("cli")
 
+DEFAULT_DEMO_DB = Path("data/demo.duckdb")
+
 
 @app.callback()
 def _root() -> None:
@@ -50,7 +52,10 @@ def init_db(db_path: Path = DEFAULT_DB_PATH) -> None:
 
 def _run_dag(name: str, dry_run: bool, db_path: Path, cutoff: date | None) -> None:
     dag = build_backfill_dag() if name == "backfill" else build_nightly_dag()
-    ctx = RunContext(dry_run=dry_run, db_path=db_path, cutoff_date=cutoff)
+    # Backfill fits LOCO folds (the stack + backtest need them); nightly is live-only.
+    ctx = RunContext(
+        dry_run=dry_run, db_path=db_path, cutoff_date=cutoff, do_loco=name == "backfill"
+    )
     order = dag.topological_order()
     log.info("dag.start", pipeline=name, dry_run=dry_run, n_nodes=len(order))
     results = dag.walk(ctx)
@@ -95,6 +100,25 @@ def ingest(
     log.info("ingest.start", raw_dir=str(raw_dir), db_path=str(db_path), allow_fetch=allow_fetch)
     results = dag.walk(ctx)
     log.info("ingest.done", n_steps=len(results), total_rows=sum(r.rows for r in results))
+
+
+@app.command()
+def demo(
+    db_path: Path = DEFAULT_DEMO_DB,
+    cutoff: str = typer.Option("2026-10-15", help="As-of date YYYY-MM-DD for the live forecast."),
+    seed: int = typer.Option(0, help="Synthetic-data seed."),
+) -> None:
+    """Seed a synthetic warehouse and run the full model spine end-to-end to JSON.
+
+    Requires the ``models`` extra (numpyro/tabpfn). Emits the site JSON artifacts
+    next to ``--db-path`` (in a ``site/`` folder).
+    """
+    from midterms26.demo import run_demo  # local import: pulls the models stack
+
+    site = run_demo(db_path, cutoff=date.fromisoformat(cutoff), seed=seed)
+    typer.echo(f"\nForecast artifacts written to: {site}")
+    for f in sorted(site.glob("*.json")):
+        typer.echo(f"  - {f.name}")
 
 
 @app.command("show-dag")

@@ -25,13 +25,27 @@ def test_backfill_dry_run_visits_every_node() -> None:
     assert {r.node for r in results} == set(dag.nodes)
 
 
-def test_unimplemented_stage_fails_loudly() -> None:
-    # Guard rail: stages whose phase hasn't landed must raise, so a non-dry-run
-    # cannot silently produce empty artifacts. geo.reaggregate lands in Phase 2.
-    from midterms26.geo import reaggregate
+def test_unimplemented_path_fails_loudly(tmp_path: object) -> None:
+    # Guard rail: the one path that hasn't landed — shapefile areal interpolation
+    # (maup, Phase 2) — must raise when plan geometries are present, so a run can
+    # never silently ignore them. Without shapefiles both geo and ingest.plans fall
+    # back to the tabular pres-by-CD path (exercised end-to-end by the demo).
+    from pathlib import Path
 
-    try:
-        reaggregate.run(object())  # type: ignore[arg-type]
-    except NotImplementedError:
-        return
-    raise AssertionError("geo.reaggregate.run should raise NotImplementedError until Phase 2")
+    from midterms26.context import RunContext
+    from midterms26.geo import reaggregate
+    from midterms26.ingest import plans
+
+    raw_dir = Path(tmp_path)  # type: ignore[arg-type]
+    (raw_dir / "plans").mkdir(parents=True)
+    (raw_dir / "plans" / "enacted_2026.shp").write_bytes(b"")
+    ctx = RunContext(raw_dir=raw_dir, db_path=raw_dir / "wh.duckdb")
+
+    for stage in (plans, reaggregate):
+        try:
+            stage.run(ctx)
+        except NotImplementedError:
+            continue
+        raise AssertionError(
+            f"{stage.__name__}.run should raise NotImplementedError on a Phase 2 shapefile"
+        )

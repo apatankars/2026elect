@@ -213,6 +213,38 @@ SCHEMA_STATEMENTS: tuple[str, ...] = (
         PRIMARY KEY (race_id, cutoff_date, plan_generation)
     )
     """,
+    # -- Per-member predictive quantile grids (Phase 4) --------------------
+    # One row per (race, member, fold). ``fold`` is 'live' for the in-sample
+    # refit that predicts the target races, or a held-out cycle (e.g. '2018')
+    # for the LOCO out-of-fold predictions the stack is fit on. ``quantiles`` is
+    # a JSON map level -> margin over ``QUANTILE_LEVELS``.
+    """
+    CREATE TABLE IF NOT EXISTS member_predictions (
+        race_id            TEXT NOT NULL,
+        cutoff_date        DATE NOT NULL,
+        plan_generation    INTEGER NOT NULL DEFAULT 0,
+        model_member       TEXT NOT NULL,       -- BAYES | TABPFN
+        fold               TEXT NOT NULL,       -- 'live' | held-out cycle
+        median_margin      DOUBLE,
+        quantiles          JSON NOT NULL,       -- level -> value
+        PRIMARY KEY (race_id, cutoff_date, plan_generation, model_member, fold)
+    )
+    """,
+    # -- Bayesian latent-factor loadings for the copula (Phase 4) ----------
+    # The hierarchical member's shared factors give an analytic race-correlation
+    # matrix (replacing the old SHAP-correlation hack). Scale is absorbed into
+    # the loadings, so Cov(i,j != i) = dot(loadings_i, loadings_j) and
+    # Var(i) = dot(loadings_i, loadings_i) + idiosyncratic_sd**2.
+    """
+    CREATE TABLE IF NOT EXISTS latent_factors (
+        race_id            TEXT NOT NULL,
+        cutoff_date        DATE NOT NULL,
+        plan_generation    INTEGER NOT NULL DEFAULT 0,
+        loadings           JSON NOT NULL,       -- component -> scaled loading
+        idiosyncratic_sd   DOUBLE NOT NULL,
+        PRIMARY KEY (race_id, cutoff_date, plan_generation)
+    )
+    """,
     # -- Predictions (immutable per plan_generation + as_of) ---------------
     """
     CREATE TABLE IF NOT EXISTS predictions (
@@ -230,6 +262,26 @@ SCHEMA_STATEMENTS: tuple[str, ...] = (
         abstain            BOOLEAN NOT NULL DEFAULT FALSE,
         abstain_reason     TEXT,                -- width>tau | bin<n_min | NULL
         PRIMARY KEY (race_id, as_of, plan_generation, model_version)
+    )
+    """,
+    # -- Joint seat-distribution forecast from the copula simulator --------
+    # One row per (as_of, plan_generation, office): the marginals are the per-race
+    # conformalized CDFs, the correlation comes from the Bayesian latent factors.
+    """
+    CREATE TABLE IF NOT EXISTS seat_forecast (
+        as_of              DATE NOT NULL,
+        plan_generation    INTEGER NOT NULL DEFAULT 0,
+        office             TEXT NOT NULL,
+        n_races            INTEGER NOT NULL,
+        n_draws            INTEGER NOT NULL,
+        majority_threshold INTEGER NOT NULL,
+        expected_dem_seats DOUBLE,
+        p_dem_majority     DOUBLE,
+        seats_p10          DOUBLE,
+        seats_p50          DOUBLE,
+        seats_p90          DOUBLE,
+        histogram          JSON,                -- seat count -> probability
+        PRIMARY KEY (as_of, plan_generation, office)
     )
     """,
     # -- National / economic indicator time series (as-of-dated) -----------
@@ -293,7 +345,10 @@ ALL_TABLES: tuple[str, ...] = (
     "pres_results_by_district",
     "districts_geo",
     "feature_matrix",
+    "member_predictions",
+    "latent_factors",
     "predictions",
+    "seat_forecast",
     "national_indicators",
     "calibration_log",
 )

@@ -1,0 +1,12 @@
+{
+  "HOUSE": {
+    "buckets": {
+      "lean_r": 6,
+      "safe_d": 31,
+      "safe_r": 1
+    },
+    "expected_dem_seats": 30.722,
+    "n_abstain": 2,
+    "n_races": 40
+  }
+}

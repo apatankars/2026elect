@@ -78,8 +78,14 @@ def _spine(dag: DAG) -> None:
     for name, module in _INGEST.items():
         dag.add(_node(name, (), module))
 
-    # Geo needs enacted plans + precinct/statewide returns.
-    dag.add(_node("geo.reaggregate", ("ingest.plans", "ingest.results"), reaggregate))
+    # Geo needs enacted plans + returns; the tabular PVI path also reads pres-by-CD.
+    dag.add(
+        _node(
+            "geo.reaggregate",
+            ("ingest.plans", "ingest.results", "ingest.pres_by_cd"),
+            reaggregate,
+        )
+    )
 
     # Features consume every source + geo, all leakage-guarded.
     feature_deps = (*_INGEST.keys(), "geo.reaggregate")

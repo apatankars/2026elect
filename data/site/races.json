@@ -1,0 +1,922 @@
+[
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 23.070312894627133,
+        "lo": 21.15533882991043
+      },
+      "80": {
+        "hi": 40.25185769486794,
+        "lo": -5.355187769435483
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 22.26900521224509,
+    "mondrian_group": "incD|unpolled|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-CA-01",
+    "win_prob_dem": 0.9506887653430764
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 18.413538204169917,
+        "lo": 17.371958980770973
+      },
+      "80": {
+        "hi": 27.974380465072343,
+        "lo": 2.6833145331317
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 18.169314019684048,
+    "mondrian_group": "open|polled1-2|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-CA-02",
+    "win_prob_dem": 0.950688764180399
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -3.7627754040052532,
+        "lo": -4.010922114233197
+      },
+      "80": {
+        "hi": 6.992322609329636,
+        "lo": -5.718589158790649
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": -3.986940172071428,
+    "mondrian_group": "incR|polled1-2|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-CA-03",
+    "win_prob_dem": 0.18930059234278673
+  },
+  {
+    "abstain": true,
+    "abstain_reason": "bin<5",
+    "intervals": {
+      "50": {
+        "hi": -2166406494.1125946,
+        "lo": 2166406473.080874
+      },
+      "80": {
+        "hi": null,
+        "lo": null
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": -11.55791817101817,
+    "mondrian_group": "incR|unpolled|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-CA-04",
+    "win_prob_dem": 0.15547747201082762
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 11.131602991911793,
+        "lo": 9.189104747415193
+      },
+      "80": {
+        "hi": 28.34256006645596,
+        "lo": -7.758828281280849
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 10.014171611238902,
+    "mondrian_group": "incD|unpolled|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-CA-05",
+    "win_prob_dem": 0.9505810246625179
+  },
+  {
+    "abstain": true,
+    "abstain_reason": "bin<5",
+    "intervals": {
+      "50": {
+        "hi": -2166406494.5486026,
+        "lo": 2166406473.0616164
+      },
+      "80": {
+        "hi": null,
+        "lo": null
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": -11.633937890106573,
+    "mondrian_group": "incR|unpolled|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-FL-01",
+    "win_prob_dem": 0.1539033454995674
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 29.14312492024292,
+        "lo": 27.18290439829726
+      },
+      "80": {
+        "hi": 34.32564455364697,
+        "lo": 8.352119471488116
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 29.370637017830244,
+    "mondrian_group": "incD|polled1-2|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-FL-02",
+    "win_prob_dem": 0.950688769198359
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -2166406462.2443013,
+        "lo": 2166406514.411669
+      },
+      "80": {
+        "hi": 34.3389602412645,
+        "lo": 7.477462451479672
+      },
+      "90": {
+        "hi": 39.95961732314149,
+        "lo": -5.696966484726679
+      }
+    },
+    "median_margin": 26.6371686730783,
+    "mondrian_group": "incD|polled3+|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-FL-03",
+    "win_prob_dem": 0.9506887709220248
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 13.85410452944985,
+        "lo": 13.628755744686966
+      },
+      "80": {
+        "hi": 15.385667995387971,
+        "lo": 10.880635694280056
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 13.840077800111775,
+    "mondrian_group": "incR|polled1-2|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-FL-04",
+    "win_prob_dem": 0.9506887605384713
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 25.4089321703773,
+        "lo": 23.962506622053464
+      },
+      "80": {
+        "hi": 35.6997261140529,
+        "lo": 2.683317149378187
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 24.54534216232298,
+    "mondrian_group": "open|polled1-2|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-FL-05",
+    "win_prob_dem": 0.9506887695378347
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -2166406505.356126,
+        "lo": 2166406471.7961106
+      },
+      "80": {
+        "hi": 6.492620787734433,
+        "lo": -21.17429605609142
+      },
+      "90": {
+        "hi": 17.23899546855714,
+        "lo": -21.425413807475522
+      }
+    },
+    "median_margin": -17.86863505576779,
+    "mondrian_group": "incR|polled3+|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-GA-01",
+    "win_prob_dem": 0.14181479385482665
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 22.355794990440856,
+        "lo": 22.766811111338583
+      },
+      "80": {
+        "hi": 27.0442522677556,
+        "lo": 8.347875275399671
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 22.57294210139289,
+    "mondrian_group": "incD|polled1-2|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-GA-02",
+    "win_prob_dem": 0.9556371869179873
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 0.5396667947474221,
+        "lo": 0.07443367067782375
+      },
+      "80": {
+        "hi": 15.19023397430889,
+        "lo": -9.465893500659917
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 0.3258902425786235,
+    "mondrian_group": "open|polled1-2|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-GA-03",
+    "win_prob_dem": 0.9500628196989555
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -2166406479.4371533,
+        "lo": 2166406502.6305466
+      },
+      "80": {
+        "hi": 12.89894231111159,
+        "lo": 10.52949232799352
+      },
+      "90": {
+        "hi": 17.239008199624422,
+        "lo": -0.49463525202753117
+      }
+    },
+    "median_margin": 11.580659662223669,
+    "mondrian_group": "incR|polled3+|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-GA-04",
+    "win_prob_dem": 0.9506887590265494
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -2166406480.7425365,
+        "lo": 2166406501.0094786
+      },
+      "80": {
+        "hi": 11.44593842495737,
+        "lo": 8.959658233632089
+      },
+      "90": {
+        "hi": 17.23900661543828,
+        "lo": -0.49463655246783106
+      }
+    },
+    "median_margin": 10.005512935395293,
+    "mondrian_group": "incR|polled3+|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-GA-05",
+    "win_prob_dem": 0.9506887561384072
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -2166406488.757576,
+        "lo": 2166406493.579697
+      },
+      "80": {
+        "hi": 10.399745037971483,
+        "lo": -2.7595978751432972
+      },
+      "90": {
+        "hi": 22.441341123755528,
+        "lo": -5.696975118095956
+      }
+    },
+    "median_margin": 2.429193370398762,
+    "mondrian_group": "incD|polled3+|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-MI-01",
+    "win_prob_dem": 0.9506887519458901
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 26.392491561488622,
+        "lo": 25.352971117390773
+      },
+      "80": {
+        "hi": 33.73552073927065,
+        "lo": 5.64022486690309
+      },
+      "90": {
+        "hi": 40.28213875351703,
+        "lo": -11.660641005136505
+      }
+    },
+    "median_margin": 26.25720245436574,
+    "mondrian_group": "open|polled3+|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-MI-02",
+    "win_prob_dem": 0.9506887680398128
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -4.12319417749188,
+        "lo": -4.334447649912471
+      },
+      "80": {
+        "hi": 12.236978417288457,
+        "lo": -11.011315333415896
+      },
+      "90": {
+        "hi": 28.405011225953313,
+        "lo": -16.71392955220231
+      }
+    },
+    "median_margin": -4.230138027576053,
+    "mondrian_group": "open|polled3+|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-MI-03",
+    "win_prob_dem": 0.18511457888151073
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 19.50424927036918,
+        "lo": 18.81380924833604
+      },
+      "80": {
+        "hi": 29.206860601156162,
+        "lo": 2.6869693181717196
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 19.235310928460013,
+    "mondrian_group": "open|polled1-2|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-MI-04",
+    "win_prob_dem": 0.9506887649123212
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -2166406485.2016196,
+        "lo": 2166406496.827941
+      },
+      "80": {
+        "hi": 6.9789528596490475,
+        "lo": 4.368265249636966
+      },
+      "90": {
+        "hi": 15.68536185995419,
+        "lo": -0.5443286207424967
+      }
+    },
+    "median_margin": 5.762631616395633,
+    "mondrian_group": "incR|polled3+|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-MI-05",
+    "win_prob_dem": 0.9505810208120161
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -2166406471.3083735,
+        "lo": 2166406508.0870595
+      },
+      "80": {
+        "hi": 15.385952653434583,
+        "lo": 15.382503125819241
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 18.40468093316845,
+    "mondrian_group": "open|unpolled|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-NY-01",
+    "win_prob_dem": 0.9506887644752022
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 11.074325028730945,
+        "lo": 12.09971083260161
+      },
+      "80": {
+        "hi": 16.004569344549335,
+        "lo": 7.459901200859862
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 11.584959000639687,
+    "mondrian_group": "incD|polled1-2|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-NY-02",
+    "win_prob_dem": 0.9505810250634241
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -3.3129984372131087,
+        "lo": -2.7246275582326196
+      },
+      "80": {
+        "hi": 9.525085383904077,
+        "lo": -7.299123293949384
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": -3.239296864872738,
+    "mondrian_group": "incD|polled1-2|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-NY-03",
+    "win_prob_dem": 0.19994013174208347
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 21.80278993156585,
+        "lo": 20.173535162224354
+      },
+      "80": {
+        "hi": 38.81576644899673,
+        "lo": -5.355188117825698
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 21.022540149264003,
+    "mondrian_group": "incD|unpolled|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-NY-04",
+    "win_prob_dem": 0.9506887636542019
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 14.06460472402128,
+        "lo": 13.387937273097407
+      },
+      "80": {
+        "hi": 23.627697216622355,
+        "lo": 2.686967424095945
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 13.85867914876856,
+    "mondrian_group": "open|polled1-2|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-NY-05",
+    "win_prob_dem": 0.95068875916895
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -7.595847096705607,
+        "lo": -8.108472463863208
+      },
+      "80": {
+        "hi": 6.992321031698634,
+        "lo": -9.812295027649512
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": -8.035490756211212,
+    "mondrian_group": "incR|polled1-2|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-OH-01",
+    "win_prob_dem": 0.1631880499610956
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 16.873677627255415,
+        "lo": 15.113840373409657
+      },
+      "80": {
+        "hi": 33.878265693123765,
+        "lo": -5.359547941964495
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 15.924706292158605,
+    "mondrian_group": "incD|unpolled|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-OH-02",
+    "win_prob_dem": 0.9506887603468945
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 16.57623809324717,
+        "lo": 16.37077113976959
+      },
+      "80": {
+        "hi": 18.091796196681045,
+        "lo": 10.88052015492105
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 16.528140660701965,
+    "mondrian_group": "incR|polled1-2|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-OH-03",
+    "win_prob_dem": 0.9506887623366428
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -2166406481.8003116,
+        "lo": 2166406497.5884886
+      },
+      "80": {
+        "hi": 4.914251498527018,
+        "lo": 10.729753069364552
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 7.899164909587368,
+    "mondrian_group": "open|unpolled|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-OH-04",
+    "win_prob_dem": 0.9506887573700319
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 0.31784153206933063,
+        "lo": 0.2941282303277905
+      },
+      "80": {
+        "hi": 6.992323679396876,
+        "lo": -1.1892283449575431
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 0.31307073430460564,
+    "mondrian_group": "incR|polled1-2|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-OH-05",
+    "win_prob_dem": 0.9506058697331204
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -6.573417655505548,
+        "lo": -7.586025241671397
+      },
+      "80": {
+        "hi": 15.190230590744665,
+        "lo": -17.795202378181294
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": -7.054169110411662,
+    "mondrian_group": "open|polled1-2|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-PA-01",
+    "win_prob_dem": 0.16735001400555805
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 6.082211961256055,
+        "lo": 4.251847501747274
+      },
+      "80": {
+        "hi": 23.232393536378087,
+        "lo": -12.717508798824884
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": 5.2647123927467,
+    "mondrian_group": "incD|unpolled|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-PA-02",
+    "win_prob_dem": 0.9505810218052592
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 9.364411955588029,
+        "lo": 9.16573248035721
+      },
+      "80": {
+        "hi": 16.271320996003173,
+        "lo": 2.3243731681357804
+      },
+      "90": {
+        "hi": 28.405016270429513,
+        "lo": -11.660646205315455
+      }
+    },
+    "median_margin": 9.265231736806726,
+    "mondrian_group": "open|polled3+|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-PA-03",
+    "win_prob_dem": 0.9506887565972535
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -2166406479.108389,
+        "lo": 2166406502.5917363
+      },
+      "80": {
+        "hi": 13.043092844019096,
+        "lo": 10.533520881110194
+      },
+      "90": {
+        "hi": 18.10284128625357,
+        "lo": -0.49463505314180584
+      }
+    },
+    "median_margin": 11.57630157593452,
+    "mondrian_group": "incR|polled3+|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-PA-04",
+    "win_prob_dem": 0.9506887594566912
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 29.116781067737094,
+        "lo": 26.56120761719897
+      },
+      "80": {
+        "hi": 36.885442450848984,
+        "lo": 5.640225973901867
+      },
+      "90": {
+        "hi": 42.20728107288189,
+        "lo": -11.660640312158064
+      }
+    },
+    "median_margin": 28.77144417247476,
+    "mondrian_group": "open|polled3+|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-PA-05",
+    "win_prob_dem": 0.950688769560545
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": 0.39572326373634825,
+        "lo": 0.17817464190066007
+      },
+      "80": {
+        "hi": 12.236980070307588,
+        "lo": -6.451606121362354
+      },
+      "90": {
+        "hi": 26.85136959939996,
+        "lo": -11.73637560274337
+      }
+    },
+    "median_margin": 0.2812011321995589,
+    "mondrian_group": "open|polled3+|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-TX-01",
+    "win_prob_dem": 0.9505243346823954
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -2166406477.1417384,
+        "lo": 2166406504.6919274
+      },
+      "80": {
+        "hi": 14.931836483540543,
+        "lo": 11.380214347959162
+      },
+      "90": {
+        "hi": 17.23900801259731,
+        "lo": -0.49463533828217576
+      }
+    },
+    "median_margin": 13.834152074144221,
+    "mondrian_group": "incR|polled3+|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-TX-02",
+    "win_prob_dem": 0.9506887588478306
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -2166406492.4817014,
+        "lo": 2166406486.4238296
+      },
+      "80": {
+        "hi": 2.4946996363682405,
+        "lo": -0.3159112413694878
+      },
+      "90": {
+        "hi": null,
+        "lo": null
+      }
+    },
+    "median_margin": -3.2705558353732758,
+    "mondrian_group": "open|unpolled|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-TX-03",
+    "win_prob_dem": 0.1999939030803397
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -2166406487.7243915,
+        "lo": 2166406494.570188
+      },
+      "80": {
+        "hi": 10.399745466457219,
+        "lo": -1.7426576397251727
+      },
+      "90": {
+        "hi": 22.10015689255958,
+        "lo": -5.696974505174644
+      }
+    },
+    "median_margin": 3.3789658747188347,
+    "mondrian_group": "incD|polled3+|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-TX-04",
+    "win_prob_dem": 0.9506887532489205
+  },
+  {
+    "abstain": false,
+    "abstain_reason": null,
+    "intervals": {
+      "50": {
+        "hi": -2166406471.7371573,
+        "lo": 2166406509.608199
+      },
+      "80": {
+        "hi": 24.34278769172975,
+        "lo": 7.4774585553133
+      },
+      "90": {
+        "hi": 25.61810177714969,
+        "lo": -5.696970598310972
+      }
+    },
+    "median_margin": 19.34386218164218,
+    "mondrian_group": "incD|polled3+|stable|HOUSE",
+    "office": "HOUSE",
+    "race_id": "2026-HOUSE-TX-05",
+    "win_prob_dem": 0.9506887618814048
+  }
+]

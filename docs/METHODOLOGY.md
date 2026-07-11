@@ -97,15 +97,19 @@ plus nearest historical analogs, with ALE/fANOVA for global structure.
 
 ## Phase → code map
 
-| Phase | Deliverable | Code |
-|-------|-------------|------|
-| 0 | Scaffolding, warehouse schema, walkable DAG | `warehouse.py`, `dag.py`, `pipeline.py`, `pipelines/` |
-| 1 | Historical backfill 2006–2024 | `ingest/` |
-| 2 | Redistricting-native geo | `geo/` |
-| 3 | Feature matrix | `features/` |
-| 4 | Models + conformal + simulate | `models/`, `conformal/`, `simulate/` |
-| 5 | Backtesting + pre-registration | `backtest/`, `docs/PREREGISTRATION.md` |
-| 6 | Live pipeline + site JSON | `publish/`, GitHub Actions |
+| Phase | Deliverable | Code | Status |
+|-------|-------------|------|--------|
+| 0 | Scaffolding, warehouse schema, walkable DAG | `warehouse.py`, `dag.py`, `pipeline.py`, `pipelines/` | ✅ Complete |
+| 1 (+1b) | Historical backfill; all ten tabular ingest sources | `ingest/` | ✅ Complete |
+| 2 | Redistricting-native geo | `geo/` | 🟡 Tabular pres-by-CD path done; `maup` shapefile areal interpolation pending |
+| 3 | Feature matrix | `features/` | ✅ Core assembly done; candidate-quality/extremism/IE features + bitemporal guard pending |
+| 4 | Models + conformal + simulate | `models/`, `conformal/`, `simulate/` | ✅ Core spine done (Bayes + TabPFN/fallback + stack + conformal + copula); interpretability decomposition pending |
+| 5 | Backtesting + pre-registration | `backtest/`, `docs/PREREGISTRATION.md` | 🟡 LOCO harness + metrics done; LLM ablation + VPI pending |
+| 6 | Live pipeline + site JSON | `publish/`, GitHub Actions | 🟡 JSON emitters done (`midterms26 demo`); interactive site pending |
+
+The full spine (Phases 0–4 core) runs end-to-end today via `midterms26 demo`. The
+remaining work is the `maup` GIS path and the roadmap differentiators layered on
+top (interpretability, LLM ablation, public site).
 
 ## Known risks (tracked, not silently resolved)
 

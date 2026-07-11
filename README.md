@@ -17,15 +17,75 @@ Two integrated workstreams:
   conformal, Mondrian calibration, Adaptive Conformal Inference, abstention, and
   a Gaussian-copula joint simulation for seat distributions.
 
-## Status: Phase 1 (historical ingest) in progress
+## Status: full modeling spine runs end-to-end
+
+The complete pipeline — ingest → geo → features → both members → stack →
+conformal → copula → publish — now runs end to end and emits the site JSON. Run
+it in one command on a self-contained synthetic warehouse:
+
+```bash
+uv pip install -e ".[dev,models]"   # models extra: NumPyro/JAX (+ sklearn fallback)
+uv run midterms26 demo              # seeds a synthetic warehouse, runs the whole spine
+# -> Forecast artifacts written to: data/site  (races, expected_seats,
+#    seat_distribution, no_call, calibration, manifest)
+```
+
+The demo doubles as an end-to-end smoke test: its synthetic generative model is
+known (`national[cycle] + district_pvi + incumbency_bump + noise`), so the
+conformal intervals should cover and the stack should not underperform either
+member. TabPFN is optional — when its checkpoint is absent the member degrades to
+the scikit-learn quantile-GBR fallback automatically, so `demo` needs only the
+`models` extra (NumPyro/JAX), not TabPFN.
 
 Phase 0 (scaffolding) is complete: the DAG is wired end to end and walkable on
-stub data. Phase 1 implements the six tabular ingest sources for real —
-parse → normalize → idempotent upsert into DuckDB, run against cached raw files.
-Phase 1b adds four more sources (ACS demographics, Daily Kos pres-by-CD, DIME
-CFscores, FEC Schedule E independent expenditures) — see `docs/ROADMAP.md` for
-the full plan from here to launch. Downstream stages (geo, models, conformal,
-simulate) still fail loudly until their phase lands.
+stub data. Phase 1 + 1b implement all ten tabular ingest sources for real —
+parse → normalize → idempotent upsert into DuckDB, run against cached raw files
+(the six originals plus ACS demographics, Daily Kos pres-by-CD, DIME CFscores,
+and FEC Schedule E independent expenditures).
+
+The distinctive UQ / eval / publish layers are now implemented and unit-tested in
+pure Python (no heavy stack — they run in the light CI):
+
+- **Conformal core** (`conformal/`): CQR nonconformity + calibrated intervals,
+  Barber et al. weighted/nonexchangeable quantile with a `+inf` test-point mass
+  (→ "No Call"), exponential cycle-decay weights, and online ACI. The marginal
+  finite-sample coverage guarantee is exercised by Monte-Carlo tests.
+- **Stacking** (`models/stack.py`): pinball-loss LOCO mixing weights per quantile
+  (convex ternary search) + Chernozhukov rearrangement to non-crossing grids.
+- **Backtest metrics** (`backtest/metrics.py`): coverage gap, interval width,
+  CRPS-from-quantiles, Brier, log loss, and the Mondrian per-group coverage audit
+  — the eval-gated-CI backbone.
+- **Publish** (`publish/emit.py`): runnable JSON emitters (race table, No-Call,
+  expected-seats via linearity of expectation, calibration dashboard, run
+  manifest) reading the `predictions` table + appending to the `calibration_log`
+  honesty ledger.
+
+Both **model members** are now implemented against the `[models]` extra (imported
+lazily so the package still installs and tests light):
+
+- **Hierarchical Bayes** (`models/bayes.py`, NumPyro NUTS): national latent
+  (partially pooled per cycle) + state random effects + linear fundamentals.
+  Cross-cycle prediction is leakage-safe by construction — a target/live cycle
+  draws its national environment from the hyperprior, never its own margins — so
+  novel/unpolled races get honestly wide posteriors. Also emits the shared
+  latent-factor loadings that give the copula its analytic race-correlation matrix.
+- **TabPFN member** (`models/tabpfn_member.py`): versioned adapter with a
+  scikit-learn quantile-GBR **fallback** (forced via `MIDTERMS26_TABPFN_BACKEND=sklearn`)
+  so a nightly run degrades gracefully when the TabPFN checkpoint is unavailable.
+
+Both write per-race quantile grids to the `member_predictions` warehouse table
+(`live` fold + per-cycle LOCO folds in backfill), consumed by the stacking
+estimator. A separate CI job installs `.[models]` and exercises them for real.
+
+Feature assembly (`features/assemble.py`) and the full mid-spine (`geo.reaggregate`,
+`models.stack`, `conformal.apply`, `simulate.copula`, `publish.emit`) are all
+implemented and exercised by `midterms26 demo`. Geo runs on the tabular
+pres-by-CD PVI path; the **one** path still to land is shapefile areal
+interpolation (the `maup` GIS path in `geo/reaggregate.py` + `ingest/plans.py`),
+which fails loudly if plan shapefiles are present rather than silently ignoring
+them. The remaining roadmap work is the differentiators layered on top of this
+spine — interpretability decomposition, the LLM ablation, and the public site.
+See `docs/ROADMAP.md` for the full plan.
 
 ```bash
 uv venv --python 3.12
@@ -33,6 +93,9 @@ uv pip install -e ".[dev]"
 
 # Phase 0 acceptance — walks the full backfill DAG on stub data:
 uv run python pipelines/backfill.py --dry-run
+
+# Full spine on a synthetic warehouse — writes site JSON to data/site (needs .[models]):
+uv run midterms26 demo
 
 # Phase 1 — real ingest of the six tabular sources from cached raw files:
 uv run midterms26 ingest --raw-dir data/raw --db-path data/warehouse.duckdb
@@ -88,7 +151,7 @@ src/midterms26/
   publish/    static JSON emitters + calibration dashboard
   warehouse.py  DuckDB schema · dag.py  DAG runner · pipeline.py  wiring · cli.py
 pipelines/    nightly.py · backfill.py (orchestration entrypoints)
-docs/         METHODOLOGY.md · PREREGISTRATION.md (frozen before Oct 1, 2026)
+docs/         GUIDE.md (run + what's left) · METHODOLOGY.md · ROADMAP.md · PREREGISTRATION.md
 ```
 
 ## Stack

@@ -27,6 +27,9 @@ class RunContext:
     ``cutoff_date`` — feature-freeze / as-of date for the run (may be ``None``).
     ``allow_fetch`` — permit live network downloads (default off; Phase 1 runs
                       against cached raw files unless explicitly enabled).
+    ``do_loco``     — fit leave-one-cycle-out folds (backfill: needed by the
+                      stack + backtest). Off for nightly, which predicts live only
+                      and reuses stack weights frozen in backfill.
     """
 
     dry_run: bool = False
@@ -34,3 +37,4 @@ class RunContext:
     raw_dir: Path = DEFAULT_RAW_DIR
     cutoff_date: date | None = None
     allow_fetch: bool = False
+    do_loco: bool = False
